@@ -1,31 +1,20 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { FiSearch, FiChevronDown } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
 import logo from "../../Assets/Images/logo-without-text.png";
 import profilePic from "../../Assets/Images/HomepageImages/defaultProfile.jpeg";
 import { AuthContext } from "../../context/AuthContext";
+import MovieSearch from "../../utils/MovieSearch"; // Import the new Search Component
 
 const MovieNavbar = () => {
   const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-
-  const searchRef = useRef(null);
   const profileRef = useRef(null);
-  let cancelToken = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setSearchOpen(false);
-        setSearchResults([]);
-      }
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setProfileDropdownOpen(false);
       }
@@ -47,33 +36,6 @@ const MovieNavbar = () => {
     navigate("/login");
   };
 
-  const handleSearch = async (query) => {
-    setSearchQuery(query);
-
-    if (query.length > 2) {
-      if (cancelToken.current) {
-        cancelToken.current.cancel("Operation canceled due to new request");
-      }
-
-      cancelToken.current = axios.CancelToken.source();
-
-      try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/search", {
-          params: { query },
-          cancelToken: cancelToken.current.token,
-        });
-
-        setSearchResults(response.data);
-      } catch (error) {
-        if (!axios.isCancel(error)) {
-          console.error("Error fetching search results:", error);
-        }
-      }
-    } else {
-      setSearchResults([]);
-    }
-  };
-
   return (
     <div
       className={`fixed top-0 left-0 w-full flex h-20 items-center px-6 z-50 transition-all duration-300 ${
@@ -89,64 +51,8 @@ const MovieNavbar = () => {
 
         {/* Right Section: Search + Profile + Purchase Button */}
         <div className="flex items-center space-x-6">
-          {/* Search Bar */}
-          <div className="relative flex items-center" ref={searchRef}>
-            <FiSearch
-              className="text-white text-2xl cursor-pointer hover:text-netflix-red transition"
-              onClick={() => setSearchOpen(true)}
-            />
-
-            {/* Expanding Search Input */}
-            <div
-              className={`absolute right-0 flex flex-col bg-gray-800 border border-gray-600 rounded-md transition-all duration-500 ${
-                searchOpen ? "w-80 opacity-100 px-4 py-2" : "w-0 opacity-0"
-              }`}
-            >
-              <input
-                type="text"
-                placeholder="Search movies..."
-                className="bg-transparent text-white w-full outline-none"
-                autoFocus
-                value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
-              />
-
-              {/* Search Results Dropdown */}
-              {searchResults.length > 0 && (
-                <div className="absolute top-full left-0 w-full bg-gray-900 rounded-md shadow-lg mt-2 max-h-72 overflow-y-auto">
-                  {searchResults.map((movie) => (
-                    <Link
-                      key={movie.id}
-                      to={`/movie/${movie.id}`}
-                      className="flex items-center px-4 py-3 text-white hover:bg-gray-700 transition space-x-4"
-                      onClick={() => {
-                        setSearchOpen(false);
-                        setSearchQuery("");
-                        setSearchResults([]);
-                      }}
-                    >
-                      {/* Movie Poster */}
-                      <img
-                        src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
-                        alt={movie.title}
-                        className="w-12 h-16 rounded-md object-cover"
-                      />
-
-                      {/* Movie Title */}
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold truncate">{movie.title}</p>
-                      </div>
-
-                      {/* Play Button */}
-                      <button className="bg-netflix-red text-white px-3 py-1 rounded-md flex-shrink-0">
-                        ▶
-                      </button>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+          {/* Search Component */}
+          <MovieSearch />
 
           {/* Purchase Plan Button */}
           <Link to="/pricing">
