@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 
 const Watch = () => {
 
-  const { movieId } = useParams();
+const { movieId } = useParams();
   const { user, login, logout } = useContext(AuthContext)
   const [movie, setMovie] = useState(null);
   const [trailerUrl, setTrailerUrl] = useState("");
@@ -34,6 +34,7 @@ const Watch = () => {
         setTrailerUrl(`https://www.youtube.com/embed/${trailerRes.data.key}`);
      
       }
+
         
       } catch (error) {
         console.error("Error fetching movie data:", error);
@@ -43,6 +44,13 @@ const Watch = () => {
     
     fetchMovie();
   }, [movieId]);
+
+   useEffect(() => {
+    if (movie) {
+      
+      document.title = `${movie.title} - YouMovies`;
+    }
+  }, [movie]);
   
   const handleCopyLink = () => {
     navigator.clipboard.writeText(trailerUrl);
@@ -79,6 +87,13 @@ const Watch = () => {
 
   return (
     <>
+     <div>
+      <title>{movie.title} - YouMovies</title>
+      <meta name="description" content={movie.description} />
+    
+
+
+    </div>
  <ToastContainer />
     <div className="relative w-full h-screen text-white">
       {/* Full-Page Banner */}

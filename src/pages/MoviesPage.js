@@ -15,6 +15,13 @@ import ResponsiveNavbar from '../components/Movies/MovieResponsiveNavbar.jsx'
 const MoviesPage = () => {
   return (
     <div>
+
+<title>YouMovies - Movies</title>
+      <meta name="description" content="Explore the latest and most popular movies on YouMovies. Watch trailers, get recommendations, and enjoy unlimited streaming!" />
+      <meta name="keywords" content="movies, streaming, latest movies, Hollywood, Bollywood, Marvel, action, drama" />
+      <link rel="icon" href="/favicon.ico" />
+
+
           <ResponsiveNavbar/>
             <MovieBanner/>
             <ContinueWatching/>

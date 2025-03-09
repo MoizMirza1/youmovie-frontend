@@ -47,7 +47,12 @@ const Video = () => {
     fetchMovie();
     fetchTrailer();
   }, [movieId]);
-
+ useEffect(() => {
+    if (movie) {
+      
+      document.title = `${movie.title} - YouMovies`;
+    }
+  }, [movie]);
   if (loading)
     return (
       <div className="flex justify-center items-center min-h-screen bg-black">
@@ -61,6 +66,8 @@ const Video = () => {
 
   return (
     <div className="relative w-full bg-black text-white flex flex-col">
+       <title>{movie.title} - YouMovies</title>
+       <meta name="description" content={movie.description} />
       <ResponsiveNavbar />
 
       {/* Main Content */}

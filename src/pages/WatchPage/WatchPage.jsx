@@ -13,7 +13,7 @@ const WatchPage = () => {
   return (
     <div>
         <ResponsiveNavbar/>
-        <Watch/>
+        <Watch />
         <Cast movieId={movieId}/>
         <SimilarMovie movieId={movieId}/>
         <Reviews/>

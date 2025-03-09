@@ -7,6 +7,15 @@ import Faq from '../Home/Faq.jsx';
 const Pricing = () => {
   return (
     <>
+     <title>Subscription Plans  - YouMovies</title>
+      <meta name="description" content="Explore YouMovies subscription plans and enjoy unlimited access to thousands of movies with our flexible pricing options." />
+      <meta name="keywords" content="YouMovies, subscription, streaming, movies, plans, HD, 4K" />
+      <meta property="og:title" content="YouMovies - Subscription Plans" />
+      <meta property="og:description" content="Choose a plan that suits your entertainment needs and start streaming today!" />
+      <meta property="og:image" content="https://yourwebsite.com/thumbnail.jpg" />
+      <meta property="og:url" content="https://yourwebsite.com/pricing" />
+
+
       <div>
         <ResponsiveNavbar />
         <div className="bg-black min-h-screen">

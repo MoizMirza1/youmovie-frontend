@@ -111,10 +111,21 @@ const Profile = () => {
    const goToWatchList = () =>{
     navigate("/watchlist");
    }
+   useEffect(() => {
+       if (user?.name) {
+         console.log(user)
+         document.title = `${user.name} - YouMovies`;
+       }
+     }, [user]);
 
   return (
     <>
+ 
+   <title>{user?.name || "Profile"} - YouMovies</title>
+      <meta name="description" content={`Profile page for ${user?.name || "user"} on YouMovies.`} />
+
    <ResponsiveNavbar/>
+   
       <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black p-6 flex justify-center items-center relative">
         <div className="p-8 rounded-lg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-full min-h-[90vh]">
           {/* Profile Picture Section */}
@@ -154,28 +165,30 @@ const Profile = () => {
 
           {/* Profile Details */}
           <div className="col-span-1 md:col-span-1 lg:col-span-3 bg-gradient-to-b from-gray-800 via-black to-gray-900 p-8 rounded-lg shadow-2xl flex flex-col space-y-6 text-white">
-            <h3 className="text-2xl font-semibold text-gray-100 mb-3">About Me</h3>
-            <p className="text-gray-300">Welcome to your cinematic journey! Explore your favorite movies and shows.</p>
+  <h3 className="text-2xl font-semibold text-gray-100 mb-3">About Me</h3>
+  <p className="text-gray-300">Welcome to your cinematic journey! Explore your favorite movies and shows.</p>
 
-            <h3 className="text-2xl font-semibold text-gray-100 mb-3">Role</h3>
-            <div className="bg-rose-600 text-white py-1 px-6 rounded-full inline-block font-semibold">{user?.role}</div>
+  <h3 className="text-2xl font-semibold text-gray-100 mb-3">Role</h3>
+  <div className="bg-rose-600 text-white py-1 px-4 rounded-full text-sm font-semibold w-fit">
+    {user?.role}
+  </div>
 
-            <h2 className="font-semibold text-2xl text-gray-100 mb-3">Contact Information</h2>
-            <p className="flex items-center space-x-4 text-gray-300"><FaEnvelope /> {user?.email}</p>
-            <p className="flex items-center space-x-4 text-gray-300"><FaPhoneAlt /> +92 0123456789</p>
-            <p className="flex items-center space-x-4 text-gray-300"><FaLocationArrow /> Karachi, Pakistan</p>
+  <h2 className="font-semibold text-2xl text-gray-100 mb-3">Contact Information</h2>
+  <p className="flex items-center space-x-4 text-gray-300"><FaEnvelope /> {user?.email}</p>
+  <p className="flex items-center space-x-4 text-gray-300"><FaPhoneAlt /> +92 0123456789</p>
+  <p className="flex items-center space-x-4 text-gray-300"><FaLocationArrow /> Karachi, Pakistan</p>
 
-            <button onClick={() => setChatOpen(true)} className="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-lg transition w-full">
-              Contact Us
-            </button>
-          </div>
+  <button onClick={() => setChatOpen(true)} className="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-lg transition w-full">
+    Contact Us
+  </button>
+</div>
         </div>
 
         {/* Chat UI */}
         {chatOpen && (
           <div className="fixed bottom-4 right-4 w-80 bg-gray-800 text-white rounded-lg shadow-2xl border border-gray-700">
             <div className="p-3 border-b border-gray-700 flex justify-between items-center">
-              <span className="font-semibold">Chat with Admin</span>
+              <span className="font-semibold">Contact with Admin</span>
               <FaTimes className="cursor-pointer hover:text-rose-500" onClick={() => setChatOpen(false)} />
             </div>
             <div className="p-3 h-60 overflow-y-auto">

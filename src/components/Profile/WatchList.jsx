@@ -47,7 +47,12 @@ const Watchlist = () => {
   if (loading) return <p className="text-center text-gray-500">Loading watchlist...</p>;
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white">
+    <>
+    <title> Watchlist -YouMovies</title>
+      <meta name="description" content="Explore the latest and most popular movies on YouMovies. Watch trailers, get recommendations, and enjoy unlimited streaming!" />
+      <meta name="keywords" content="movies, streaming, latest movies, Hollywood, Bollywood, Marvel, action, drama" />
+      <link rel="icon" href="/favicon.ico" />
+      <div className="bg-gray-900 min-h-screen text-white">
       <Navbar />
       <div className="p-6 max-w-4xl mx-auto">
         <h2 className="text-2xl font-semibold mb-6">Your Watchlist</h2>
@@ -75,6 +80,8 @@ const Watchlist = () => {
       </div>
       <Footer />
     </div>
+    </>
+   
   );
 };
 

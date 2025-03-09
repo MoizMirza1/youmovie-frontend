@@ -31,7 +31,10 @@ const GenreSeriesPage = () => {
   }, [genreId]);
 
   return (
+    
     <div className="bg-black py-10">
+       <title>Genre  - YouMovies</title>
+       <meta name="description" content="Explore YouMovies subscription plans and enjoy unlimited access to thousands of movies with our flexible pricing options." />
       <div className="max-w-7xl mx-auto px-4">
         <h1 className="text-white text-3xl md:text-5xl font-semibold mb-6 text-center">
           Series for Genre: {genreName}

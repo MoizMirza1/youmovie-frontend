@@ -35,6 +35,9 @@ const GenrePage = () => {
 
   return (
     <div className="bg-black min-h-screen text-white">
+       <title>Genre  - YouMovies</title>
+      <meta name="description" content="Explore YouMovies subscription plans and enjoy unlimited access to thousands of movies with our flexible pricing options." />
+     
       <Navbar />
 
       <div className="max-w-7xl mx-auto pt-20 px-4">
