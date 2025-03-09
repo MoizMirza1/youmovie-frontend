@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "@fontsource/rajdhani";
+@import "@fontsource/bebas-neue";
+
+
+
+@layer components {
+    .underline-fill {
+      position: relative;
+      overflow: hidden;
+    }
+  
+    .underline-fill::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px; /* Adjust the thickness of the underline */
+      background-color: red;
+      transition: width 0.3s ease-in-out;
+    }
+  
+    .underline-fill:hover::after {
+      width: 100%;
+    }
+  }
+  body {
+    @apply font-rajdhani;
+  }
+
+  /* Custom Button Class */
+.btn {
+  @apply bg-netflix-red text-white font-rajdhani text-lg px-20 py-2 rounded-md transition ease-in-out duration-300;
+}
+
+.btn:hover {
+  @apply bg-red-700;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  display: flex;
+  animation: marquee 15s linear infinite;
+}
