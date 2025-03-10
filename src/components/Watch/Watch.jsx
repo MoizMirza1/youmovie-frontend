@@ -7,6 +7,10 @@ import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { QRCodeCanvas } from "qrcode.react";
+import logo from "../../Assets/Images/logo-without-text.png"
+
+
 
 const Watch = () => {
 
@@ -233,54 +237,82 @@ const { movieId } = useParams();
 )}
 
       {/* Share Modal */}
-      {isShareOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-gray-900 text-white p-6 rounded-lg w-80">
-            <div className="flex justify-between items-center border-b pb-3 mb-3">
-              <h3 className="text-lg font-semibold">Share Movie</h3>
-              <button onClick={() => setIsShareOpen(false)} className="text-gray-300 hover:text-white">
-                <FaTimes />
-              </button>
-            </div>
+      import QRCode from "qrcode.react";
 
-            {/* Social Media Links */}
-            <div className="flex space-x-4 justify-center mb-4">
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(trailerUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 w-12 h-12 flex items-center justify-center rounded-full transition duration-300"
-              >
-                <FaFacebook className="text-white text-xl" />
-              </a>
-              <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(trailerUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-400 hover:bg-blue-500 w-12 h-12 flex items-center justify-center rounded-full transition duration-300"
-              >
-                <FaTwitter className="text-white text-xl" />
-              </a>
-              <a
-                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(trailerUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 w-12 h-12 flex items-center justify-center rounded-full transition duration-300"
-              >
-                <FaWhatsapp className="text-white text-xl" />
-              </a>
-            </div>
+{isShareOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className="bg-gray-900 text-white p-6 rounded-lg w-80">
+      <div className="flex justify-between items-center border-b pb-3 mb-3">
+        <h3 className="text-lg font-semibold">Share Movie</h3>
+        <button onClick={() => setIsShareOpen(false)} className="text-gray-300 hover:text-white">
+          <FaTimes />
+        </button>
+      </div>
 
-            {/* Share Link & Copy Button */}
-            <div className="flex items-center bg-gray-800 rounded-md p-2">
-              <input type="text" value={trailerUrl} readOnly className="bg-transparent text-white w-full text-sm px-2 outline-none" />
-              <button onClick={handleCopyLink} className="text-white bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-md ml-2 transition duration-300">
-                <FaCopy />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Social Media Links */}
+      <div className="flex space-x-4 justify-center mb-4">
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(trailerUrl)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-blue-600 hover:bg-blue-700 w-12 h-12 flex items-center justify-center rounded-full transition duration-300"
+        >
+          <FaFacebook className="text-white text-xl" />
+        </a>
+        <a
+          href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(trailerUrl)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-blue-400 hover:bg-blue-500 w-12 h-12 flex items-center justify-center rounded-full transition duration-300"
+        >
+          <FaTwitter className="text-white text-xl" />
+        </a>
+        <a
+          href={`https://api.whatsapp.com/send?text=${encodeURIComponent(trailerUrl)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 hover:bg-green-600 w-12 h-12 flex items-center justify-center rounded-full transition duration-300"
+        >
+          <FaWhatsapp className="text-white text-xl" />
+        </a>
+      </div>
+
+      {/* Share Link & Copy Button */}
+      <div className="flex items-center bg-gray-800 rounded-md p-2">
+        <input type="text" value={trailerUrl} readOnly className="bg-transparent text-white w-full text-sm px-2 outline-none" />
+        <button onClick={handleCopyLink} className="text-white bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-md ml-2 transition duration-300">
+          <FaCopy />
+        </button>
+      </div>
+
+      {/* QR Code for Trailer URL */}
+      <div className="flex flex-col items-center bg-gray-900 p-4 rounded-lg shadow-lg">
+      
+      
+      <QRCodeCanvas
+        value={trailerUrl}
+        size={170}
+        bgColor="#ffffff"
+        fgColor="#e50914" // Netflix-style red
+        level="H"
+        includeMargin={true}
+        imageSettings={{
+          src: logo, // Branded logo inside QR
+          height: 40,
+          width: 40,
+          excavate: true,
+        }}
+        className="rounded-lg"
+      />
+
+<h3 className="text-white text-lg font-semibold mt-5">
+        Scan to Watch the Trailer
+      </h3>
+    </div>
+    </div>
+  </div>
+)}
+
     </div>
     </>
   );
