@@ -4,7 +4,7 @@ import { FaChevronDown } from "react-icons/fa"; // Import react-icons
 const faqData = [
   {
     id: 1,
-    question: "What is YouMovies?",
+    question: "What is YouMovies??",
     answer:
       "YouMovies is a premium streaming service offering a vast collection of movies and TV shows. Enjoy unlimited entertainment with our flexible subscription plans.",
   },
