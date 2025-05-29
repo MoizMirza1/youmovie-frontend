@@ -22,7 +22,7 @@ const Banner = () => {
     // Fetch trending movies from your backend
     const fetchTrendingMovies = async () => {
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/trending/movies"); // Adjust your API URL if needed
+        const response = await axios.get("https://youmovie-o9a9-106hx9a2o-moizmirza1s-projects.vercel.app//api/tmdb/trending/movies"); // Adjust your API URL if needed
         
         setTrendingMovies(response.data.results.slice(10, 20));
       } catch (error) {
