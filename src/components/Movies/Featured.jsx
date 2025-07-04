@@ -13,7 +13,7 @@ const FeaturedSection = () => {
   useEffect(() => {
     const fetchFeaturedMovies = async () => {
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/featured/movies");
+        const response = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/featured/movies");
         setMovies(response.data);
       } catch (error) {
         console.error("Error fetching featured movies:", error);

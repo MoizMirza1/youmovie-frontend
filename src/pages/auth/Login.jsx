@@ -16,7 +16,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("https://youmovie-production.up.railway.app/api/auth/login", { loginChoice, password });
+      const { data } = await axios.post("https://youmovie-o9a9-106hx9a2o-moizmirza1s-projects.vercel.app/api/auth/login", { loginChoice, password });
       localStorage.setItem("userToken", data.token);
       setUser(data.user);
       if (data.user.role === "admin") {

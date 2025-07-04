@@ -15,7 +15,7 @@ const GenreSeries = () => {
     // Fetch TV series genres from the API
     const fetchGenres = async () => {
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/genres/series"); // Your endpoint for fetching genres
+        const response = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/genres/series"); // Your endpoint for fetching genres
         setGenres(response.data); // Set the genres data
       } catch (error) {
         console.error("Error fetching genres:", error);

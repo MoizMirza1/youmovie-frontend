@@ -18,7 +18,7 @@ const UpcomingSeries = () => {
     const fetchUpcomingSeries = async () => {
       try {
         const response = await axios.get(
-          "https://youmovie-production.up.railway.app/api/tmdb/series/upcoming/netflix/?page=2" 
+          "https://youmovie-o9a9.vercel.app/api/tmdb/series/upcoming/netflix/?page=2" 
         );
         setSeries(response.data.results || []);
       } catch (error) {

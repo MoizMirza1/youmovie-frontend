@@ -12,13 +12,13 @@ const GenreSeriesPage = () => {
       try {
         // Fetch series for the genre
         const seriesResponse = await axios.get(
-          `https://youmovie-production.up.railway.app/api/tmdb/genre/${genreId}/similar`
+          `https://youmovie-o9a9.vercel.app/api/tmdb/genre/${genreId}/similar`
         );
         setSeries(seriesResponse.data); // Set the series data
 
         // Fetch genre name (You can fetch the genre name from your database or TMDb API)
         const genreResponse = await axios.get(
-          `https://youmovie-production.up.railway.app/api/tmdb/genres/series`
+          `https://youmovie-o9a9.vercel.app/api/tmdb/genres/series`
         );
         const genre = genreResponse.data.find((g) => g.id === parseInt(genreId));
         setGenreName(genre ? genre.name : "Unknown Genre"); // Set the genre name

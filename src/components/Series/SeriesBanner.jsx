@@ -15,7 +15,7 @@ const SeriesBanner = () => {
   useEffect(() => {
     const fetchSeries = async () => {
       try {
-        const response = await fetch("https://youmovie-production.up.railway.app/api/tmdb/series/selected");
+        const response = await fetch("https://youmovie-o9a9.vercel.app/api/tmdb/series/selected");
         const data = await response.json();
         if (Array.isArray(data) && data.length > 0) {
           setSeries(data);

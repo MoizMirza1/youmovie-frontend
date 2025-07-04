@@ -16,8 +16,8 @@ const GenrePage = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const moviesResponse = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/genre/${id}/movies`);
-        const genresResponse = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/genres");
+        const moviesResponse = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/genre/${id}/movies`);
+        const genresResponse = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/genres");
 
         setMovies(moviesResponse.data.results);
 

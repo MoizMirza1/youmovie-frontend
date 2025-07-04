@@ -30,10 +30,10 @@ const { movieId } = useParams();
   
     const fetchMovie = async () => {
       try {
-        const movieRes = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/movie/${movieId}`);
+        const movieRes = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/movie/${movieId}`);
         setMovie(movieRes.data);
   
-        const trailerRes = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/movie/${movieId}/trailer`);
+        const trailerRes = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/movie/${movieId}/trailer`);
       if (trailerRes.data) {
         setTrailerUrl(`https://www.youtube.com/embed/${trailerRes.data.key}`);
      
@@ -70,7 +70,7 @@ const { movieId } = useParams();
     
 
     try {
-      const response = await axios.post("https://youmovie-production.up.railway.app/api/auth/watchlist/add", {
+      const response = await axios.post("https://youmovie-o9a9.vercel.app/api/auth/watchlist/add", {
         userId: user._id,
         movieId,
 

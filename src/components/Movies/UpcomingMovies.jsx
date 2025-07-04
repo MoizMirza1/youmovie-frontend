@@ -18,7 +18,7 @@ const UpcomingMovies = () => {
     const fetchUpcomingMovies = async () => {
       try {
         const response = await axios.get(
-          "https://youmovie-production.up.railway.app/api/tmdb/movies/upcoming/?page=2"
+          "https://youmovie-o9a9.vercel.app/api/tmdb/movies/upcoming/?page=2"
         );
         setMovies(response.data.results || []);
       } catch (error) {

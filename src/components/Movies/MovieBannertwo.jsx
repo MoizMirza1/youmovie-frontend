@@ -15,7 +15,7 @@ const MovieBannerTwo = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await fetch("https://youmovie-production.up.railway.app/api/tmdb/trending/movies?page=3");
+        const response = await fetch("https://youmovie-o9a9.vercel.app/api/tmdb/trending/movies?page=3");
         const data = await response.json();
         if (data.results) {
           setMovies(data.results);

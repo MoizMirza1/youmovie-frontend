@@ -10,7 +10,7 @@ const MarvelSection = () => {
   useEffect(() => {
     const fetchMarvelMovies = async () => {
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/marvel/movies");
+        const response = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/marvel/movies");
         setMovies(response.data);
       } catch (error) {
         console.error("Error fetching Marvel movies:", error);

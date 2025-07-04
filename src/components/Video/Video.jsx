@@ -24,7 +24,7 @@ const Video = () => {
     const fetchMovie = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/movie/${movieId}`);
+        const response = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/movie/${movieId}`);
         setMovie(response.data);
       } catch (error) {
         console.error("Error fetching movie details:", error);
@@ -35,7 +35,7 @@ const Video = () => {
 
     const fetchTrailer = async () => {
       try {
-        const response = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/movie/${movieId}/trailer`);
+        const response = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/movie/${movieId}/trailer`);
         if (response.data) {
           setTrailerKey(response.data.key);
         }

@@ -14,7 +14,7 @@ const PopularSeries = () => {
   useEffect(() => {
     const fetchPopularSeries = async () => {
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/netflix/originals");
+        const response = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/netflix/originals");
         setSeries(response.data.results || []); // Ensure it's an array
       } catch (error) {
         console.error("Error fetching popular series:", error);

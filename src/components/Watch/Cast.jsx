@@ -11,7 +11,7 @@ const CastAndCrew = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const res = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/movie/${movieId}`);
+        const res = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/movie/${movieId}`);
         setMovieDetails(res.data);
       } catch (error) {
         console.error("Error fetching movie details:", error);
@@ -20,7 +20,7 @@ const CastAndCrew = () => {
 
     const fetchCredits = async () => {
       try {
-        const res = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/movie/${movieId}/credits`);
+        const res = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/movie/${movieId}/credits`);
         setCredits(res.data);
       } catch (error) {
         console.error("Error fetching movie credits:", error);

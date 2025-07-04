@@ -60,7 +60,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem("userToken");
-      await axios.post("https://youmovie-production.up.railway.app/api/auth/logout", {}, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post("https://youmovie-o9a9.vercel.app/api/auth/logout", {}, { headers: { Authorization: `Bearer ${token}` } });
 
       localStorage.removeItem("userToken");
       setUser(null);

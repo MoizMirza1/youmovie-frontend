@@ -16,7 +16,7 @@ const StreamingProviders = ({ movieId }) => {
             try {
               
     
-                const response = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/movie/${movieId}/providers`);
+                const response = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/movie/${movieId}/providers`);
     
                 if (response.data?.results?.US) {
                     const usProviders = response.data.results.US;

@@ -14,7 +14,7 @@ const PopularMovies = () => {
   useEffect(() => {
     const fetchPopularMovies = async () => {
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/movies/popular");
+        const response = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/movies/popular");
         setMovies(response.data);
       } catch (error) {
         console.error("Error fetching popular movies:", error);

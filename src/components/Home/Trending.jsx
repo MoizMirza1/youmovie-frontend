@@ -11,7 +11,7 @@ const Trending = () => {
   useEffect(() => {
     const fetchTrendingMovies = async () => {
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/trending/movies");
+        const response = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/trending/movies");
         setMovies(response.data.results);
       } catch (error) {
         console.error("Error fetching movies:", error);

@@ -20,7 +20,7 @@ const Watchlist = () => {
       }
 
       try {
-        const response = await axios.get(`https://youmovie-production.up.railway.app/api/auth/see/watchlist/${user._id}`);
+        const response = await axios.get(`https://youmovie-o9a9.vercel.app/api/auth/see/watchlist/${user._id}`);
         setWatchlist(response.data.watchlist);
       } catch (error) {
         console.error("Error fetching watchlist:", error);
@@ -35,7 +35,7 @@ const Watchlist = () => {
 
   const removeFromWatchlist = async (movieId) => {
     try {
-      await axios.delete(`https://youmovie-production.up.railway.app//api/auth/remove/watchlist/${user._id}/${movieId}`);
+      await axios.delete(`https://youmovie-o9a9.vercel.app//api/auth/remove/watchlist/${user._id}/${movieId}`);
       setWatchlist((prev) => prev.filter((movie) => movie.id !== movieId));
       toast.success("Movie removed from watchlist.");
     } catch (error) {

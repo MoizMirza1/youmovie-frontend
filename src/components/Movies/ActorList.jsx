@@ -15,7 +15,7 @@ const ActorList = () => {
   // Fetch actors only once (memoized function)
   const fetchActors = useCallback(async () => {
     try {
-      const response = await fetch("https://youmovie-production.up.railway.app/api/tmdb/actors/popular");
+      const response = await fetch("https://youmovie-o9a9.vercel.app/api/tmdb/actors/popular");
       const data = await response.json();
 
       if (data) {

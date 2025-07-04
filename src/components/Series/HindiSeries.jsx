@@ -22,7 +22,7 @@ const HindiSeries = () => {
   useEffect(() => {
     const fetchHindiSeries = async () => {
       try {
-        const response = await axios.get('https://youmovie-production.up.railway.app/api/tmdb/hindi/series'); // Replace with your actual API URL
+        const response = await axios.get('https://youmovie-o9a9.vercel.app/api/tmdb/hindi/series'); // Replace with your actual API URL
         setSeries(response.data); // Set the fetched data to the state
         console.log(response)
       } catch (error) {

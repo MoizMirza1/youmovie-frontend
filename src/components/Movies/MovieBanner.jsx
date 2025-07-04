@@ -22,7 +22,7 @@ const navigate = useNavigate();
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await fetch("https://youmovie-production.up.railway.app/api/tmdb/trending/movies"); // Adjust API endpoint
+        const response = await fetch("https://youmovie-o9a9.vercel.app/api/tmdb/trending/movies"); // Adjust API endpoint
         const data = await response.json();
         if (data.results) {
           setMovies(data.results);

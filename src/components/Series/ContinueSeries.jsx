@@ -13,9 +13,9 @@ const ContinueSeries = () => {
   useEffect(() => {
     const fetchMixedSeries = async () => {
       try {
-        const popular = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/popular");
-        const trending = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/trending");
-        const nowAiring = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/tv/airing_today");
+        const popular = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/popular");
+        const trending = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/trending");
+        const nowAiring = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/tv/airing_today");
 
         const popularSeries = popular.data.results || [];
         const trendingSeries = trending.data.results || [];

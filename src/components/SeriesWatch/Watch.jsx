@@ -17,10 +17,10 @@ const Watch = () => {
 
     const fetchSeries = async () => {
       try {
-        const seriesRes = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/series/${movieId}`);
+        const seriesRes = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/series/${movieId}`);
         setSeries(seriesRes.data);
 
-        const trailerRes = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/series/${movieId}/trailer`);
+        const trailerRes = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/series/${movieId}/trailer`);
         if (trailerRes.data) {
           setTrailerUrl(`https://www.youtube.com/embed/${trailerRes.data.key}`);
         }

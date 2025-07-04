@@ -20,7 +20,7 @@ const DisneyFeaturedSeries = () => {
     const fetchDisneyFeaturedSeries = async () => {
       try {
         const { data } = await axios.get(
-          "https://youmovie-production.up.railway.app/api/tmdb/disneyplus/featured"
+          "https://youmovie-o9a9.vercel.app/api/tmdb/disneyplus/featured"
         );
         setSeries(data.results || []);
       } catch (error) {

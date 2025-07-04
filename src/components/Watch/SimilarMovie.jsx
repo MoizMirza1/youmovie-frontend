@@ -9,7 +9,7 @@ const SimilarMovie = () => {
   useEffect(() => {
     const fetchSimilarMovies = async () => {
       try {
-        const res = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/movie/${movieId}/similar`);
+        const res = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/movie/${movieId}/similar`);
         setSimilarMovies(res.data.slice(0, 6)); // Display 6 movies
       } catch (error) {
         console.error("Error fetching similar movies:", error);

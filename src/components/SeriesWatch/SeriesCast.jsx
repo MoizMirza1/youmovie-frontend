@@ -13,7 +13,7 @@ const SeriesCast = () => {
     const fetchSeriesDetails = async () => {
       try {
         // Fetch details for TV series using the correct endpoint
-        const res = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/series/${movieId}`);
+        const res = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/series/${movieId}`);
         setSeriesDetails(res.data);
       } catch (error) {
         console.error("Error fetching series details:", error);
@@ -23,7 +23,7 @@ const SeriesCast = () => {
     const fetchCredits = async () => {
       try {
         // Fetch credits for TV series using the correct endpoint
-        const res = await axios.get(`https://youmovie-production.up.railway.app/api/tmdb/${movieId}/credits`);
+        const res = await axios.get(`https://youmovie-o9a9.vercel.app/api/tmdb/${movieId}/credits`);
         setCredits(res.data);
       } catch (error) {
         console.error("Error fetching series credits:", error);

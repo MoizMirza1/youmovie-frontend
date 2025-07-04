@@ -17,7 +17,7 @@ const SeriesBannerTwo = () => {
     // Fetch the top-rated Prime Video series from your backend API
     const fetchSeries = async () => {
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/prime-video/top-rated");
+        const response = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/prime-video/top-rated");
         setSeries(response.data); // Set the series to state
         setCurrentSeries(response.data[0]); // Set the first series as the default
       } catch (error) {

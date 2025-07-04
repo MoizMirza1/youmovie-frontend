@@ -18,14 +18,11 @@ const Register = () => {
     const handleRegister = async (e) => {
       e.preventDefault();
       try {
-        const { data } = await axios.post("https://youmovie-production.up.railway.app/api/auth/register", { name ,email, password, role });
+        const { data } = await axios.post("http://localhost:5000/api/auth/register", { name ,email, password, role });
         localStorage.setItem("userToken", data.token);
         setUser(data.user);
-        if (data.user.role === "admin") {
-          navigate("/admin");
-        } else {
-          navigate("/");
-        }
+        navigate(`/verify-email/${data.user._id}`); 
+       
       } catch (error) {
         alert(error.response?.data?.message || "Registration failed");
       }

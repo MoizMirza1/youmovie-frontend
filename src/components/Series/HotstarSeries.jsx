@@ -22,7 +22,7 @@ const HotstarFeaturedMoviesAndSeries = () => {
     const fetchHotstarMoviesAndSeries = async () => {
       try {
         const response = await axios.get(
-          "https://youmovie-production.up.railway.app/api/tmdb/hotstar/featured"
+          "https://youmovie-o9a9.vercel.app/api/tmdb/hotstar/featured"
         );
         setMovies(response.data.movies || []);
         setSeries(response.data.series || []);

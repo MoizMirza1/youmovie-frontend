@@ -36,7 +36,7 @@ const MovieSearch = () => {
       cancelToken.current = axios.CancelToken.source();
 
       try {
-        const response = await axios.get("https://youmovie-production.up.railway.app/api/tmdb/search", {
+        const response = await axios.get("https://youmovie-o9a9.vercel.app/api/tmdb/search", {
           params: { query },
           cancelToken: cancelToken.current.token,
         });
