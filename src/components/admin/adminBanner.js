@@ -14,7 +14,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     axios
-      .get("https://youmovie-production.up.railway.app/api/auth/users")
+      .get("https://youmovie-o9a9.vercel.app/api/auth/users")
       .then((res) => {
         console.log("Users Data:", res.data);
         setUsers(res.data);
@@ -22,7 +22,7 @@ const AdminDashboard = () => {
       .catch((err) => console.error("Error fetching users:", err));
 
     axios
-      .get("https://youmovie-production.up.railway.app/api/auth/active-users")
+      .get("https://youmovie-o9a9.vercel.app/api/auth/active-users")
       .then((res) => {
         console.log("Active Users Data:", res.data);
         setActiveUsers(res.data);

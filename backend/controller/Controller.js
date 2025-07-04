@@ -4,8 +4,45 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { uploadToCloudinary , upload   } = require("../uploadsService/fileUploadService.js")
 const { fetchFromTMDB } = require("../services/tmdbService");
+const { Resend } = require("resend");
+
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+
+const sendVerificationEmail = async (email, userId) => {
+  try {
+    const verificationLink = `http://localhost:3000/verify-email/${userId}`; 
+    const emailTemplate = `
+    <div style="font-family: Arial, sans-serif; color: #333;">
+      <h2>Verify Your Email</h2>
+      <p>Please click the link below to verify your email address:</p>
+      <a href="${verificationLink}" style="background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+        Verify Email
+      </a>
+      <p>If you did not request this, please ignore this email.</p>
+    </div>
+  `;
+    
+    const { data, error } = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: email,
+      subject: 'Verify Your Email',
+      html: emailTemplate
+    });
+
+    if (error) {
+      throw new Error("Failed to send verification email");
+    }
+
+    console.log("📧 Verification email sent!");
+  } catch (error) {
+    console.error("🚨 Error sending verification email:", error);
+    throw error; // Re-throw the error for handling in the calling function
+  }
+};
+
 
 exports.registerUser = async (req, res) => {
   try {
@@ -36,8 +73,12 @@ exports.registerUser = async (req, res) => {
       email,
       hashedPassword,
       role: "user", // ✅ Enforce "user" role
+      emailVerified: false,
     });
 
+    await sendVerificationEmail(user.email, user._id);
+
+    
     // ✅ Send response (exclude password)
     res.status(201).json({
       user: { _id: user._id, name: user.name, email: user.email, role: user.role },
@@ -47,6 +88,46 @@ exports.registerUser = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+
+exports.verifyEmail = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.emailVerified = true; 
+    await user.save();
+
+    res.json({ success: true, message: "Email verified successfully!" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+exports.resendVerificationEmail = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // 🔹 Only resend the email if the user's email is not already verified
+    if (user.emailVerified) {
+      return res.status(400).json({ message: "Email is already verified" });
+    }
+
+    await sendVerificationEmail(user.email, user._id);
+
+    res.status(200).json({ message: "Verification email resent" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 
 exports.loginUser = async (req, res) => {
   try {

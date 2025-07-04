@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   profilePic: { type: String, default: "" },
   watchlist: [{ type: String }], 
   isActive: { type: Boolean, default: false },
+  emailVerified: { type: Boolean, default: false },
 }, { timestamps: true }); 
 
 

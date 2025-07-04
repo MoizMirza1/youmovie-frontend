@@ -1,5 +1,5 @@
 const express = require("express");
-const { registerUser, loginUser, getHome, uploadProfilePicture,getActiveUsers ,getAllUsers, logoutUser, sendMessage , getMessages ,addWishList , getWatchlist ,removeFromWatchlist  } = require("../controller/Controller");
+const { registerUser, loginUser, getHome, uploadProfilePicture,getActiveUsers ,getAllUsers, logoutUser, sendMessage , getMessages ,addWishList , getWatchlist ,removeFromWatchlist , verifyEmail  } = require("../controller/Controller");
 const { upload } = require("../uploadsService/fileUploadService")
 const {protect , adminOnly} = require("../middleware/authMiddleware");
 const router = express.Router();
@@ -7,6 +7,10 @@ const router = express.Router();
 const Message = require("../models/Chat.js")
 
 router.post("/register", registerUser);
+router.get("/verify-email/:userId", verifyEmail);
+
+
+
 router.post("/login", loginUser);
 router.post("/logout", protect, logoutUser);
 
